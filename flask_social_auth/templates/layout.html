@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Flask Social Auth</title>
+<link rel=stylesheet type=text/css href="{{ url_for('.static', filename='style.css') }}">
+<div class=page>
+    <h1>Flask Social Auth</h1>
+    <ul class=navigation>
+        {% if session['user_id'] %}
+            <li><a href="{{ url_for('logout') }}">sign out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login_facebook') }}">sign in w/ facebook</a></li>
+            <li><a href="{{ url_for('login_twitter') }}">sign in w/ twitter</a></li>
+            <li><a href="{{ url_for('login_google') }}">sign in w/ google</a>
+        {% endif %}
+    </ul>
+    {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+
+</div>
