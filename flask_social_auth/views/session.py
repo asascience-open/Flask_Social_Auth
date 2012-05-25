@@ -93,5 +93,5 @@ def google_authorized(resp):
     return redirect(url_for('index'))
 
 @google.tokengetter
-def get_twitter_token():
+def get_google_token():
     return session.get('google_token')
